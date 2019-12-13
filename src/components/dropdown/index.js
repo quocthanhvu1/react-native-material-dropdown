@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { TextField } from 'react-native-material-textfield';
+import { translate } from '../../../../../src/translations'
 
 import DropdownItem from '../item';
 import styles from './styles';
@@ -504,7 +505,8 @@ export default class Dropdown extends PureComponent {
       String(title);
 
     return (
-      <TextField
+      
+      Field
         label=''
         labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
 
@@ -631,7 +633,7 @@ export default class Dropdown extends PureComponent {
     return (
       <DropdownItem index={index} {...props}>
         <Text style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
-          {title}
+          {translate(title)}
         </Text>
       </DropdownItem>
     );
