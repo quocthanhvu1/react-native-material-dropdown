@@ -1,4 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
+import { Color } from '../../../../../src/assets'
 
 export default StyleSheet.create({
   accessory: {
@@ -58,6 +59,10 @@ export default StyleSheet.create({
   scroll: {
     flex: 1,
     borderRadius: 2,
+    backgroundColor: Color.main,
+    borderColor: Color.border_modal,
+    borderWidth: 2,
+    borderRadius: 5
   },
 
   scrollContainer: {
