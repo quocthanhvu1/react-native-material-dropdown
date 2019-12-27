@@ -14,7 +14,9 @@ import {
 } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { TextField } from 'react-native-material-textfield';
+
 import { translate } from '../../../../../src/translations'
+import {startCase, toLower} from 'lodash'
 
 import DropdownItem from '../item';
 import styles from './styles';
@@ -154,6 +156,7 @@ export default class Dropdown extends PureComponent {
     supportedOrientations: PropTypes.arrayOf(PropTypes.string),
 
     useNativeDriver: PropTypes.bool,
+    heightDropdown: PropTypes.number.isRequired
   };
 
   constructor(props) {
@@ -633,7 +636,7 @@ export default class Dropdown extends PureComponent {
     return (
       <DropdownItem index={index} {...props}>
         <Text style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
-          {this.props.isTranslate ? translate(title) : title}
+          {this.props.isTranslate ? translate(title) : startCase(toLower(title))}
         </Text>
       </DropdownItem>
     );
@@ -740,7 +743,7 @@ export default class Dropdown extends PureComponent {
             onResponderRelease={this.blur}
           >
             <View
-              style={[styles.picker, pickerStyle, pickerStyleOverrides]}
+              style={[styles.picker, pickerStyle, pickerStyleOverrides, { height: this.props.heightDropdown }]}
               onStartShouldSetResponder={() => true}
             >
               <FlatList
